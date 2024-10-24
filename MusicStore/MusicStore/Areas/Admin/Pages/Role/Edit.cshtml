@@ -1,0 +1,81 @@
+﻿@page "/admin/edit-role/{roleid}"
+@model MusicStore.Areas.Admin.Pages.Role.EditModel
+@{
+    ViewData["Title"] = "Cập nhật role";
+}
+<section class="events-section latest-events sponsors-section default-section margin-bott-50 margin-top-50">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px 0px 40px;">
+                <div class="column  with-margin col-md-6 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);">
+                            <div class="forminfor">
+                                <div class="text-left margin-bott-20">
+                                    <h2><strong>@ViewData["Title"]</strong></h2>
+                                    <partial name="_StatusMessage" model="@Model.StatusMessage"> </partial>
+                                </div>
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <h4><label asp-for="Input.Name" class="control-label"></label></h4>
+                                        <input asp-for="Input.Name" class="form-control" />
+                                        <span asp-validation-for="Input.Name" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                                        <a class="btn btn-primary btn-inline" asp-page="./Index">Danh sách các role</a>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="column  with-margin col-md-6 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);">
+                            <div class="forminfor">
+                                <p>
+                                    Các đặc tính (Claim) của role:
+                                    <a class="btn btn-info" asp-page="./AddRoleClaim" asp-route-roleid="@Model.role.Id">+ Thêm claim</a>
+                                </p>
+
+                                @if (Model.Claims.Count > 0)
+                                {
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Tên Claim</th>
+                                                <th>Giá trị</th>
+                                                <th>#</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var claim in Model.Claims)
+
+                                            {
+                                                <tr>
+                                                    <td>@claim.ClaimType</td>
+                                                    <td> @claim.ClaimValue</td>
+                                                    <td><a class="btn btn-warning" asp-page="./EditRoleClaim" asp-route-claimid="@claim.Id">Chỉnh sửa</a></td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

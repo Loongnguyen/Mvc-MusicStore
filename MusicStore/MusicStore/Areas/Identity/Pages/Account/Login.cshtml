@@ -1,0 +1,56 @@
+﻿@page "/Login/"
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+
+<section class="events-section latest-events sponsors-section default-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px 0px 40px;">
+                <div class="column image-column col-md-6 col-sm-12 col-xs-12">
+                    <figure class="image-box video-box">
+                        <img style="box-shadow: 0 12px 12px rgb(0 0 0 / 0.4);" class="rounded" src="~/image/banner/slider-top.png">
+                    </figure>
+                </div>
+                <div class="column default-text-column with-margin col-md-6 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);">
+                            <h1 class="margin-bott-20"><strong>Đăng nhập</strong></h1>
+                            <form id="account" class="forminfor" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                                <h4 class="margin-bott-20">Nhập tài khoản</h4>
+                                <div class="form-group mb-3">
+                                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                                <h4 class="margin-bott-20">Nhập mật khẩu</h4>
+                                <div class="form-group mb-3">
+                                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true"/>
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                                <div class="checkbox mb-3">
+                                    <label asp-for="Input.RememberMe" class="form-label">
+                                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                    </label>
+                                </div>
+                                <div class="margin-bott-20 margin-top-20">
+                                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Đăng nhập</button>
+                                </div>
+                                <div class="margin-bott-20">
+                                        <span style="font-size:18px;">Bạn chưa có tài khoản ? </span><a style="font-size:18px" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Đăng ký ngay!</a>
+                                </div>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

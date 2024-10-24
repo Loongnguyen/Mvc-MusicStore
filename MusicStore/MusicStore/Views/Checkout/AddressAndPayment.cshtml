@@ -1,0 +1,94 @@
+﻿@model MusicStore.Models.Order
+@{
+    ViewData["Title"] = "Địa chỉ và thanh toán";
+
+}
+<section class="events-section latest-events sponsors-section default-section margin-bott-50 margin-top-50">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px 0px 40px;">
+                <div class="column  with-margin col-md-6 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);">
+                            <div class="forminfor">
+                                <div class="text-left margin-bott-20">
+                                    <h2><strong>@ViewData["Title"]</strong></h2>
+                                </div>
+                                @if (ViewData["ErrorMessage"] != null)
+                                {
+                                    <div class="alert alert-danger">
+                                        @ViewData["ErrorMessage"]
+                                    </div>
+                                }
+                                <form asp-action="AddressAndPayment" method="post">
+                                    <div class="form-group">
+                                        <h4>Họ</h4>
+                                        <input asp-for="FirstName" class="form-control" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h4>Tên</h4>
+                                        <input asp-for="LastName" class="form-control" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h4>Quốc gia</h4>
+                                        <input asp-for="Country" class="form-control" />
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h4>Thành phố</h4>
+                                        <input asp-for="City" class="form-control" />
+                                        <span asp-validation-for="City" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h4>Quận, Huyện</h4>
+                                        <input asp-for="State" class="form-control" />
+                                        <span asp-validation-for="State" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h4>Địa chỉ cụ thể</h4>
+                                        <input asp-for="Address" class="form-control" />
+                                        <span asp-validation-for="Address" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h4>Mã bưu chính</h4>
+                                        <input asp-for="PostalCode" class="form-control" />
+                                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h4>Số điện thoại</h4>
+                                        <input asp-for="Phone" class="form-control" />
+                                        <span asp-validation-for="Phone" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h4>Địa chỉ Email</h4>
+                                        <input asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <span>
+                                            Chúng tôi đang thực hiện chương trình khuyến mãi: tất cả âm nhạc đều miễn phí với mã khuyến mãi: <strong class="slide-text">"FREE"</strong>
+                                        </span>
+                                        <h4>Mã khuyến mãi</h4>
+                                        <input type="text" name="promoCode" class="form-control" />
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Hoàn thành</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

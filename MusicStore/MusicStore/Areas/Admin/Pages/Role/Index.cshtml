@@ -1,0 +1,53 @@
+﻿@page "/admin/role"
+@model MusicStore.Areas.Admin.Pages.Role.IndexModel
+@{
+    ViewData["Title"] = "Danh sách các role(vai trò)";
+}
+<section class="default-section latest-news">
+    <div class="auto-container">
+        <div class="margin-bott-20 text-left">
+           <h2><strong>@ViewData["Title"]</strong></h2>
+        </div>
+        <partial name="_StatusMessage" model="@Model.StatusMessage"> </partial>
+        <div class="admin-search">
+           <a  class="btn btn-success margin-bott-10 margin-right-10" asp-page="./Create">Tạo role mới</a>
+           <a  class="btn btn-success margin-bott-10 " asp-page="../User/Index">Quản lý thành viên</a>
+        </div>
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <div class="alert alert-warning">
+                @ViewBag.Message
+            </div>
+        }
+        <div class="row clearfix">
+            <div class="column blog-news-column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <table class=" table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Tên role (vai trò)</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                    </thead>
+                    @foreach (var role in Model.roles)
+                    {
+                        <tr>
+                            <td>@role.Name <br />
+                            @foreach (var claim in @role.Claims)
+                                {
+                                    <small>@claim</small><br />
+                                }
+                            </td>
+
+                            <td>
+                                <a class="btn btn-info btn-sm" asp-page="./Edit" asp-route-roleid="@role.Id">Cập Nhật</a>
+                                <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-roleid="@role.Id">Xóa</a>
+                            </td>
+                        </tr>
+
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

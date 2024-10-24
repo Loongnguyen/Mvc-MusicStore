@@ -1,0 +1,108 @@
+﻿@model MusicStore.Models.Album
+@{
+    ViewBag.Title = Model.Title;
+}
+<script src="~/assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="~/assets/js/plugins/slick.js"></script>
+<script src="~/assets/js/plugins/jquery.theia.sticky.js"></script>
+<script src="~/assets/js/plugins/jquery.elevatezoom.js"></script>
+<script src="~/assets/js/shop.js?v=5.5"></script>
+<section class="product-detail accordion-detail default-section latest-news">
+    <div style="position:absolute; top:20px; left:10px;  box-shadow: 0 5px 7px rgb(0 0 0 / 0.3);"><button class="btn bgrcolor-gray" onclick="history.back();">Trở lại</button></div>
+    <div class="auto-container">
+        <h2 class="text-center" style="margin-top:40px;"><strong>Album:</strong>@Model.Title</h2>
+        <div class="row mt-30 align-center-box">
+            <div class="col-md-6 col-sm-12 col-xs-12 mb-md-0 mb-sm-5">
+                <div class="detail-gallery">
+                    <!-- MAIN SLIDES -->
+                    <div class="product-image-slider">
+                        <figure class="border-radius-10">
+                            <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        </figure>
+                        <figure class="border-radius-10">
+                            <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        </figure>
+                        <figure class="border-radius-10">
+                            <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        </figure>
+                        <figure class="border-radius-10">
+                            <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        </figure>
+                        <figure class="border-radius-10">
+                            <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        </figure>
+                        <figure class="border-radius-10">
+                            <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        </figure>
+                    </div>
+                    <!-- THUMBNAILS -->
+                    <div class="slider-nav-thumbnails">
+                        <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                        <img alt="@Model.Title" src="~/image/@Model.AlbumArtUrl" />
+                    </div>
+                </div>
+                <!-- End Gallery -->
+            </div>
+
+            <div class="col-md-6 col-sm-12 col-xs-12 product-description-column">
+                <div class="inner-box">
+                    <p class="title-product-details">
+                        <em>Thể Loại:</em>
+                        @Model.Genre.GenreName
+                    </p>
+                    <p class="text-product-details">
+                        <em>Tác giả:</em>
+                        @Model.Artist.ArtistName
+                    </p>
+                    <p class="text-product-details">
+                        <em>Giá sản phẩm:</em>
+                        @Model.Price.ToString("n0") VNĐ
+                    </p>
+                    <a asp-controller="Cart"  asp-action="AddToCart" asp-route-albumId="@Model.AlbumId" class="theme-btn contact-btn">Thêm vào giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class=" default-section bgrcolor-gray">
+    <div class="auto-container">
+        <div class="row detail-product-section clearfix">
+
+            <!--Column-->
+            <div class="column col-md-12 col-sm-12 col-xs-12">
+                <div class="title-detail">
+                    <h1><strong>Thông tin chi tiết</strong></h1>
+                </div>
+                <div class="title-detail">
+                    <h3>Tên Album</h3>
+                    <div class="text no-margin-bottom">
+                        <p class="text-product-details">@Model.Title</p>
+                    </div>
+                </div>
+                <div class="title-detail">
+                    <h3>Thể loại</h3>
+                    <div class="text no-margin-bottom">
+                        <p class="text-product-details"> @Model.Genre.GenreName</p>
+                    </div>
+                </div>
+                <div class="title-detail">
+                    <h3>Tác giả</h3>
+                    <div class="text no-margin-bottom">
+                        <p class="text-product-details">@Model.Artist.ArtistName</p>
+                    </div>
+                </div>
+                <div class="title-detail">
+                    <h3>Giá sản phẩm</h3>
+                    <p class="text-product-details">  @Model.Price.ToString("n0") VNĐ</p>
+                </div>
+                <div class="images-detail">
+                    <img src="~/image/banner/banner-bottom.png" alt="product detail">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

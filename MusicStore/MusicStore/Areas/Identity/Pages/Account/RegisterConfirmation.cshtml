@@ -1,0 +1,25 @@
+﻿@page "/RegisterConfirmation/"
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Xác nhận đăng ký";
+}
+
+<section class="events-section latest-events sponsors-section default-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px  40px;">
+                <div class="column default-text-column with-margin col-md-6 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3); padding: 30px  40px;">
+                            <h1 class="margin-bott-20"><strong>@ViewData["Title"]</strong></h1>
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                <h3><strong>Đăng ký tài khoản thành công</strong></h3>
+                                <button type="submit" class="btn btn-danger">Đăng Nhập ngay</button>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

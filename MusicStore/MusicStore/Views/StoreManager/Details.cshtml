@@ -1,0 +1,61 @@
+﻿@model MusicStore.Models.Album
+@{
+    ViewData["Title"] = "Chi tiết ";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="events-section latest-events sponsors-section default-section margin-bott-50 margin-top-50">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px 0px 40px;">
+                <div class="column  with-margin col-md-5 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);">
+                            <div class="forminfor">
+                                <div class="text-left margin-bott-20">
+                                    <h2><strong>Chi tiết</strong></h2>
+                                </div>
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.ValidationSummary(true)
+
+                                    <h3><strong>Thể loại:</strong></h3>
+                                    <h4>
+                                        @Html.DisplayFor(model => model.Genre.GenreName)
+                                    </h4>
+
+                                    <h3><strong>Tác giả:</strong></h3>
+                                    <h4>
+                                        @Html.DisplayFor(model => model.Artist.ArtistName)
+                                    </h4>
+
+                                    <h3><strong>Tên Album:</strong></h3>
+                                    <h4>
+                                        @Html.DisplayFor(model => model.Title)
+                                    </h4>
+
+                                    <h3><strong>Giá:</strong></h3>
+                                    <h4>
+                                        @Html.DisplayFor(model => model.Price.ToString("n0"))
+                                    </h4>
+
+                                    <h3><strong>Đường dẫn ảnh:</strong></h3>
+                                    <h4>
+                                        @Html.DisplayFor(model => model.AlbumArtUrl)
+                                    </h4>
+                                    <div class="margin-top-20" style="display:flex; justify-content:flex-start;">
+                                        <p>
+                                            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.AlbumId }, new { @class = "btn btn-warning" })
+                                            @Html.ActionLink("Trở về", "Index", new { }, new { @class = "btn btn-info" })
+                                        </p>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

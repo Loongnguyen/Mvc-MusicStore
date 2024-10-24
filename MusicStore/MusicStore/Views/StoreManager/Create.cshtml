@@ -1,0 +1,79 @@
+﻿@model MusicStore.Models.Album
+@{
+    ViewData["Title"] = "Tạo mới";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="events-section latest-events sponsors-section default-section margin-bott-50 margin-top-50">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px 0px 40px;">
+                <div class="column  with-margin col-md-5 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);">
+                            <div class="forminfor">
+                                <div class="text-left margin-bott-20">
+                                    <h2><strong>Tạo mới</strong></h2>
+                                </div>
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.ValidationSummary(true)
+                                    <h3>Album</h3>
+
+                                    <div class="editor-label">
+                                        @Html.LabelFor(model => model.Genre, "Genre")
+                                    </div>
+                                    <div class="editor-field">
+                                        <select class="form-control" asp-for="GenreId" asp-items="ViewBag.Genre"></select>
+                                        <span asp-validation-for="GenreId" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="editor-label">
+                                        @Html.LabelFor(model => model.Artist, "Artist")
+                                    </div>
+                                    <div class="editor-field">
+                                        <select class="form-control" asp-for="ArtistId" asp-items="ViewBag.Artist"></select>
+                                        <span asp-validation-for="ArtistId" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="editor-label">
+                                        @Html.LabelFor(model => model.Title)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Title)
+                                    </div>
+
+                                    <div class="editor-label">
+                                        @Html.LabelFor(model => model.Price)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Price)
+                                    </div>
+
+                                    <div class="editor-label">
+                                        @Html.LabelFor(model => model.AlbumArtUrl)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.EditorFor(model => model.AlbumArtUrl, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AlbumArtUrl)
+                                    </div>
+                                    <div class="margin-top-20" style="display:flex; justify-content:flex-start;">
+                                        <p class=" margin-right-10">
+                                            <input type="submit" value="Create" class="btn btn-primary" />
+                                        </p>
+                                        <p>
+                                            @Html.ActionLink("trở về", "Index", new { }, new { @class = "btn btn-info" })
+                                        </p>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

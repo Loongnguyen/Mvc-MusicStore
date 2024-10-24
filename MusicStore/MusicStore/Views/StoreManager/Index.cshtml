@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Album>
+@{
+    ViewData["Title"] = "Quản lý ";
+    int i = 0;
+}
+<section class="margin-top-30 latest-news">
+    <div class="auto-container">
+        <div class="margin-bott-20 text-left">
+            <h2>Quản lý sản phẩm</h2>
+        </div>
+        <p>
+            @Html.ActionLink("Tạo mới", "Create", new { }, new { @class = "btn btn-info" })
+        </p>
+        <form asp-action="Index" method="get">
+            <div class="admin-search">
+                <h4><strong>Tìm kiếm</strong></h4>
+                <input class="form-control" style="max-width:150px; margin:0 10px;" name="SearchString" value="@ViewBag.SearchString" placeholder="Nhập tên album....." />
+                <button class="btn btn-secondary" type="submit">Tìm kiếm</button>
+            </div>
+
+        </form>
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <div class="alert alert-warning">
+                @ViewBag.Message
+            </div>
+        }
+        <div class="row clearfix">
+            <div class="column blog-news-column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <table class=" table table-hover" ">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>THỂ LOẠI</th>
+                            <th>TÁC GIẢ</th>
+                            <th>TÊN ALBUM</th>
+                            <th>GIÁ</th>
+                            <th class="text-center">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                @foreach (var item in Model)
+                {
+                            <tr>
+                                <td>@(++i)</td>
+                                <td>
+                            @if (item.Genre != null)
+                            {
+                                @Html.DisplayFor(modelItem => item.Genre.GenreName)
+                            }
+                            else
+                            {
+                                        <span class="text-danger">Không thuộc thể loại nào</span>
+                            }
+                                </td>
+                                <td>
+                            @if (item.Artist != null)
+                            {
+                                @Html.DisplayFor(modelItem => item.Artist.ArtistName)
+                            }
+                            else
+                            {
+                                        <span class="text-danger">Không có tác giả</span>
+                            }
+                                </td>
+                                <td> @Html.DisplayFor(modelItem => item.Title)</td>
+                                <td>  @item.Price.ToString("F0")</td>
+                                <td>
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.AlbumId }, new { @class = "btn btn-danger margin-left-10 margin-bott-10" })
+                            @Html.ActionLink("Chính sửa", "Edit", new { id = item.AlbumId }, new { @class = "btn btn-warning margin-left-10 margin-bott-10" })
+                            @Html.ActionLink("Chi tiết", "Details", new { id = item.AlbumId }, new { @class = "btn btn-primary margin-left-10 margin-bott-10" })
+                                </td>
+                            </tr>
+                }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

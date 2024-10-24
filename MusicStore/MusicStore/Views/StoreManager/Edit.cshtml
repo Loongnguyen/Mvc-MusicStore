@@ -1,0 +1,76 @@
+﻿@model MusicStore.Models.Album
+
+@{
+    ViewData["Title"] = "Chỉnh sửa ";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="events-section latest-events sponsors-section default-section margin-bott-50 margin-top-50">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px 0px 40px;">
+                <div class="column  with-margin col-md-5 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);">
+                            <form asp-action="Edit" class="forminfor">
+                                <div class="text-left margin-bott-20">
+                                    <h2><strong>Chỉnh sửa</strong></h2>
+                                </div>
+                                <input type="hidden" asp-for="AlbumId" />
+
+                                <div class="editor-label">
+                                    <h4><label asp-for="GenreId">Thể Loại</label></h4>
+                                </div>
+                                <div>
+                                    <select class="form-control" asp-for="GenreId" asp-items="ViewBag.GenreId"></select>
+                                    <span asp-validation-for="GenreId" class="text-danger"></span>
+                                </div>
+
+                                <div class="editor-label">
+                                    <h4><label asp-for="ArtistId">Tác giả</label></h4>
+                                </div>
+                                <div>
+                                    <select class="form-control" asp-for="ArtistId" asp-items="ViewBag.ArtistId"></select>
+                                    <span asp-validation-for="ArtistId" class="text-danger"></span>
+                                </div>
+
+                                <div class="editor-label">
+                                    <h4><label asp-for="Title">Tên album</label></h4>
+                                </div>
+                                <div>
+                                    <input class="form-control" asp-for="Title" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+
+                                <div class="editor-label">
+                                    <h4><label asp-for="Price">Giá</label></h4>
+                                </div>
+                                <div>
+                                    <input class="form-control" asp-for="Price" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+
+                                <div class="editor-label">
+                                    <h4><label  asp-for="AlbumArtUrl">Đường dẫn</label></h4>
+                                </div>
+                                <div>
+                                    <input class="form-control"  asp-for="AlbumArtUrl" />
+                                    <span asp-validation-for="AlbumArtUrl" class="text-danger"></span>
+                                </div>
+                                <div class="margin-top-20" style="display:flex; justify-content:flex-start;">
+                                <p class="margin-right-10">
+                                    <input type="submit" value="Lưu" class="btn btn-success " />
+                                </p>
+                                <p>
+                                    @Html.ActionLink("Trở về", "Index", new { }, new { @class = "btn btn-info" })
+                                </p>
+                                </div>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

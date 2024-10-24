@@ -1,0 +1,38 @@
+﻿@page "/admin/delete-role/{roleid}"
+@model MusicStore.Areas.Admin.Pages.Role.DeleteModel
+@{
+    ViewData["Title"] = "Xóa role";
+}
+<section class="events-section latest-events sponsors-section default-section margin-bott-50 margin-top-50">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px 0px 40px;">
+                <div class="column  with-margin col-md-6 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);">
+                            <div class="forminfor">
+                                <div class="text-left margin-bott-20">
+                                    <h2><strong>@ViewData["Title"]</strong></h2>
+                                    <partial name="_StatusMessage" model="@Model.StatusMessage"> </partial>
+                                </div>
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <p>Bạn có chắc chắn muốn xóa role <strong class="text-danger">@Model.role.Name</strong> không ?</p>
+                                    <div class="form-group">
+                                        <input type="submit" value="Đồng ý" class="btn btn-danger" />
+                                        <a class="btn btn-primary btn-inline" asp-page="./Index">Danh sách các role</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

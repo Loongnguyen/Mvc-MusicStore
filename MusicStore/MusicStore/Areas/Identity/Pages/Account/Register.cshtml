@@ -1,0 +1,47 @@
+﻿@page "/Register/"
+@model RegisterModel
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+<section class="events-section latest-events sponsors-section default-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px 0px 40px;">
+                <div class="column image-column col-md-6 col-sm-12 col-xs-12">
+                    <figure class="image-box video-box">
+                        <img style="box-shadow: 0 12px 12px rgb(0 0 0 / 0.4);" class="rounded" src="~/image/banner/slider-top.png">
+                    </figure>
+                </div>
+                <div class="column default-text-column with-margin col-md-6 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);">
+                            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                <h2><strong>Điền thông tin để tạo tài khoản mới.</strong></h2>
+                                <hr />
+                                <div class="form-group">
+                                    <label asp-for="Input.Email"></label>
+                                    <input asp-for="Input.Email" class="form-control" />
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Password"></label>
+                                    <input asp-for="Input.Password" class="form-control" />
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.ConfirmPassword"></label>
+                                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Đăng ký</button>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

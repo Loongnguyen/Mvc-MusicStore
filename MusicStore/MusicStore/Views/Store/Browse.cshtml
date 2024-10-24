@@ -1,0 +1,59 @@
+﻿@model MusicStore.Models.Genre
+@{
+    ViewBag.Title = "Danh sách";
+}
+<section class="events-section latest-events default-section">
+    <div style="position:absolute; top:20px; left:10px; box-shadow: 0 5px 7px rgb(0 0 0 / 0.3);">
+        <button class="btn bgrcolor-gray" onclick="history.back();">Trở lại</button>
+    </div>
+    <div class="auto-container">
+        <div class="sec-title text-center">
+            <h2>Các album thuộc thể loại: <strong>@Model.GenreName</strong></h2>
+        </div>
+        <div class="row clearfix">
+            @foreach (var album in Model.Album)
+            {
+                <div class="column blog-news-column text-promotion col-lg-3 col-md-6 col-sm-6 col-xs-12 " >
+                    <article>
+                        <figure class="image-box" style=" box-shadow: 0 4px 10px rgb(0 0 0 / 0.3);">
+                            <a href="@Url.Action("Details", new { id = album.AlbumId })">
+                                <img  alt="@album.Title" src="~/image/@album.AlbumArtUrl" />
+                            </a>
+                        </figure>
+                        <div class="content-box">
+                            <h3 class="margin-top-20 margin-bott-20 text-center">
+                                <a href="@Url.Action("Details", new { id = album.AlbumId })">
+                                    <span>@album.Title</span>
+                                </a>
+                            </h3>
+                        </div>
+                    </article>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+<section class="events-section latest-events sponsors-section default-section bgrcolor-gray">
+    <div class="auto-container box-justify">
+        <div class="row clearfix">
+            <div class="sec-title">
+                <h2 class="text-center">Âm Nhạc</h2>
+                <p class="text-center" Style="color:rgba(106, 106, 106, 1);">Khi âm thanh Piano sống trong sự căng thẳng</p>
+            </div>
+            <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div>
+                    <p class="text-justify">
+                        Đầu tháng 12/2013, ở thành phố Kiev, Ukraine, hàng trăm ngàn người dân đã xuống phố biểu tình. Trong bức hình được chụp ngày 7/12 bởi nhiếp ảnh gia Andrew Meakovski, chúng ta thấy một thanh niên ngồi chơi Piano trước một hàng dài các cảnh sát chống bạo động. Người thanh niên này có tên Markiyan Matsekh.
+                        <br />
+                        <br />
+                        Trong khi những người dân vẫn tiếp tục biểu tình và cảnh sát có mặt để duy trì trật tự đám đông, Matsekh say sưa chơi đàn. Anh chơi những bản nhạc cổ điển của Chopin với mong muốn xoa dịu không khí căng thẳng giữa hai bên.
+                        Có nhiều cách để xoa dịu những căng thẳng, mất mát hay nỗi buồn đau, âm nhạc là một cách hữu hiệu trong số đó, những câu chuyện xúc động trên đã chứng minh được luận điểm này. Hãy cùng chúng tôi nghe một ca khúc quen thuộc của mùa giáng sinh,  năm mới đã gần kề cầu chúc cho muôn người luôn an lành, được sống trong hòa bình và hạnh phúc.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>

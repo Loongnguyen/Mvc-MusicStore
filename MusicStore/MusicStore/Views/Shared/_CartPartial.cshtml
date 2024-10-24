@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Http
+@using MusicStore.Service
+@using Newtonsoft.Json
+@inject CartService _cartService;
+
+@{
+    var cart = _cartService.GetCartItems();
+    if (cart.Count > 0)
+    {
+        <a asp-route="cart">Giỏ hàng(<strong class="color-green-light"> @cart.Count </strong>)</a>
+    }
+    else
+    {
+        <a asp-route="cart">Giỏ hàng(0)</a>
+    }
+}

@@ -1,0 +1,26 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Đơn hàng đã hoàn tất";
+}
+<section class="events-section latest-events sponsors-section default-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div style="padding: 30px  40px;">
+                <div class="column default-text-column with-margin col-md-6 col-sm-12 col-xs-12">
+                    <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="inforform" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.3); padding: 30px  40px;">
+                            <h2>@ViewData["Title"]</h2>
+                            <p>Đơn hàng với mã <strong>@Model</strong> của bạn đã được hoàn tất!</p>
+                            <p>Cảm ơn bạn đã mua hàng tại Music Store! Chúng tôi sẽ sớm liên hệ lại bạn để giao hàng!<br />Trân trọng cảm ơn quý khách !</p>
+                            <p>
+                                Quay lại trang chủ <strong>
+                                    @Html.ActionLink("Trang chủ", "Index", "Home")
+                                </strong>
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

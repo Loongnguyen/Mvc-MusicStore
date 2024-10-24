@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li>
+        <a>Xin chào @UserManager.GetUserName(User)!</a>
+    </li>
+    <li>
+        <a asp-area="Identity" asp-page="/Account/Logout">Đăng xuất</a>
+    </li>
+}
+else
+
+{
+    <li><a asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a></li>
+}
